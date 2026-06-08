@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arun Raghupathi | Cloud Engineer Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Bebas+Neue&family=Oxanium:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#050807;
+    --card:#0b1110;
+    --card2:#111918;
+    --green:#00ff88;
+    --cyan:#00e5ff;
+    --amber:#ffb000;
+    --text:#d8fff0;
+    --border:#17302a;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'JetBrains Mono', monospace;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(rgba(0,255,136,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,.04) 1px, transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none;
+}
+
+.container{
+    width:90%;
+    max-width:1300px;
+    margin:auto;
+}
+
+header{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:40px;
+    width:100%;
+}
+
+.hero-left h1{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:7rem;
+    letter-spacing:4px;
+    line-height:.9;
+    color:var(--green);
+    text-shadow:0 0 20px rgba(0,255,136,.5);
+}
+
+.hero-left h2{
+    margin-top:15px;
+    color:var(--cyan);
+    font-family:'Oxanium', sans-serif;
+    font-size:1.6rem;
+}
+
+.typing{
+    margin-top:20px;
+    color:var(--amber);
+    font-size:1rem;
+}
+
+.hero-left p{
+    margin-top:25px;
+    line-height:1.8;
+    max-width:750px;
+}
+
+.hero-right{
+    border:1px solid var(--border);
+    background:var(--card);
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 20px rgba(0,255,136,.15);
+}
+
+.terminal-header{
+    display:flex;
+    gap:8px;
+    margin-bottom:15px;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+}
+
+.red{background:#ff4d4d;}
+.yellow{background:#ffc400;}
+.green{background:#00ff88;}
+
+.terminal{
+    color:var(--green);
+    line-height:1.8;
+    font-size:.9rem;
+}
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:100;
+    backdrop-filter:blur(10px);
+    background:rgba(5,8,7,.8);
+    border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 5%;
+}
+
+.logo{
+    color:var(--green);
+    font-family:'Oxanium';
+    font-weight:700;
+    font-size:1.3rem;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav a{
+    color:var(--text);
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--green);
+}
+
+section{
+    padding:80px 0;
+}
+
+.section-title{
+    font-family:'Bebas Neue';
+    font-size:3rem;
+    color:var(--green);
+    letter-spacing:3px;
+    margin-bottom:30px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:25px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(0,229,255,.15);
+}
+
+.card h3{
+    color:var(--cyan);
+    margin-bottom:15px;
+}
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.skill{
+    padding:10px 16px;
+    border:1px solid var(--green);
+    color:var(--green);
+    border-radius:30px;
+    font-size:.85rem;
+}
+
+.timeline{
+    border-left:2px solid var(--green);
+    padding-left:25px;
+}
+
+.timeline-item{
+    margin-bottom:35px;
+}
+
+.timeline-item h3{
+    color:var(--cyan);
+}
+
+.timeline-item span{
+    color:var(--amber);
+    font-size:.85rem;
+}
+
+.project{
+    background:var(--card2);
+}
+
+.project ul{
+    margin-top:10px;
+    padding-left:18px;
+}
+
+.project li{
+    margin-bottom:8px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.stat{
+    text-align:center;
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:30px;
+    border-radius:12px;
+}
+
+.number{
+    font-size:2.5rem;
+    color:var(--green);
+    font-family:'Oxanium';
+    font-weight:700;
+}
+
+footer{
+    padding:50px 0;
+    text-align:center;
+    border-top:1px solid var(--border);
+}
+
+.contact{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.contact-item{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:15px 20px;
+    border-radius:10px;
+}
+
+.cursor{
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+@media(max-width:900px){
+
+.hero{
+    grid-template-columns:1fr;
+}
+
+.hero-left h1{
+    font-size:4rem;
+}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<div class="logo">ARUN.OS</div>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<header>
+<div class="container">
+
+<div class="hero">
+
+<div class="hero-left">
+
+<h1>ARUN<br>RAGHUPATHI</h1>
+
+<h2>Cloud Engineer | Inventory & Electronics Maintenance Associate</h2>
+
+<div class="typing">
+&gt; <span id="typed"></span><span class="cursor">_</span>
+</div>
+
+<p>
+Experienced Inventory and Electronics Maintenance Associate transitioning into
+Cloud Computing. Skilled in AWS Cloud Services, Linux Administration,
+DevOps Fundamentals, Infrastructure Monitoring, ERP Systems,
+Electronic Troubleshooting, and Cloud Deployment.
+</p>
+
+</div>
+
+<div class="hero-right">
+
+<div class="terminal-header">
+<div class="dot red"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
+</div>
+
+<div class="terminal">
+<p>$ whoami</p>
+<p>Arun Raghupathi</p>
+
+<p>$ role</p>
+<p>Cloud Engineer</p>
+
+<p>$ technologies</p>
+<p>AWS Linux Docker Kubernetes Jenkins GitHub</p>
+
+<p>$ status</p>
+<p>Learning • Building • Deploying</p>
+
+<p>$ uptime</p>
+<p>99.9% Motivation</p>
+
+</div>
+</div>
+
+</div>
+</div>
+</header>
+
+<section id="about">
+<div class="container">
+
+<h2 class="section-title">ABOUT</h2>
+
+<div class="card">
+<p>
+Experienced professional with a background in Inventory Management,
+Electronics Maintenance, Customer Support, ERP-based Stock Management,
+and Hardware Troubleshooting. Currently focused on AWS Cloud Computing,
+Linux Administration, DevOps Automation, Containerization, and
+Infrastructure Management.
+</p>
+</div>
+
+</div>
+</section>
+
+<section id="skills">
+<div class="container">
+
+<h2 class="section-title">TECHNICAL SKILLS</h2>
+
+<div class="skills">
+
+<div class="skill">AWS</div>
+<div class="skill">EC2</div>
+<div class="skill">S3</div>
+<div class="skill">VPC</div>
+<div class="skill">IAM</div>
+<div class="skill">Linux</div>
+<div class="skill">Git</div>
+<div class="skill">GitHub</div>
+<div class="skill">Docker</div>
+<div class="skill">Kubernetes</div>
+<div class="skill">Jenkins</div>
+<div class="skill">Ansible</div>
+<div class="skill">CI/CD</div>
+<div class="skill">Shell Scripting</div>
+<div class="skill">System Monitoring</div>
+<div class="skill">ERP Support</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="experience">
+<div class="container">
+
+<h2 class="section-title">EXPERIENCE</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>Zebronics India Pvt Ltd</h3>
+<span>Inventory Maintenance & Electronic Management Associate | Jan 2025 - Present</span>
+<p>
+Inventory control, ERP updates, stock tracking, customer support,
+product service coordination and issue resolution.
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>Junior Engineer | Onsite Engineer</h3>
+<span>Nov 2021 - Dec 2024</span>
+<p>
+Diagnosed PCBA issues, replaced faulty components,
+visited customer locations, and supported inventory maintenance.
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>Production Department</h3>
+<span>Sep 2020 - Oct 2021</span>
+<p>
+Assembly, quality inspection, packaging,
+and production process support for electronic products.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+
+<h2 class="section-title">PROJECTS</h2>
+
+<div class="grid">
+
+<div class="card project">
+<h3>AWS Dynamic Website Hosting</h3>
+<ul>
+<li>EC2 Deployment</li>
+<li>Elastic Load Balancer</li>
+<li>Auto Scaling</li>
+<li>VPC Security</li>
+<li>High Availability Architecture</li>
+</ul>
+</div>
+
+<div class="card project">
+<h3>Linux Log Analyzer Tool</h3>
+<ul>
+<li>Bash Scripting</li>
+<li>System Health Monitoring</li>
+<li>Cron Job Automation</li>
+<li>Security Log Analysis</li>
+</ul>
+</div>
+
+<div class="card project">
+<h3>Smart Home Power Management</h3>
+<ul>
+<li>Arduino Based Solution</li>
+<li>Power Consumption Monitoring</li>
+<li>Sensor Integration</li>
+<li>Automated Energy Control</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<h2 class="section-title">ACHIEVEMENTS</h2>
+
+<div class="stats">
+
+<div class="stat">
+<div class="number">30%</div>
+<p>Reduced Inventory Discrepancies</p>
+</div>
+
+<div class="stat">
+<div class="number">95%</div>
+<p>Device Repair Success Rate</p>
+</div>
+
+<div class="stat">
+<div class="number">20%</div>
+<p>Reduced Equipment Failures</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+
+<h2 class="section-title">CONTACT</h2>
+
+<div class="contact">
+
+<div class="contact-item">
+📧 rarun1196@gmail.com
+</div>
+
+<div class="contact-item">
+📱 +91 63820 33923
+</div>
+
+<div class="contact-item">
+🔗 linkedin.com/in/arun-r-1173aa170
+</div>
+
+</div>
+
+</div>
+</section>
+
+<footer>
+<p>© 2026 Arun Raghupathi | Cloud Engineer Portfolio</p>
+</footer>
+
+<script>
+
+const text =
+"Cloud Engineer | AWS | Linux | DevOps | Automation | Infrastructure Monitoring";
+
+let i = 0;
+
+function typeWriter(){
+    if(i < text.length){
+        document.getElementById("typed").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter,60);
+    }
+}
+
+typeWriter();
+
+</script>
+
+</body>
+</html>
